@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,18 +14,16 @@ import java.util.List;
 @Builder
 public class ProjectRequest {
 
-    @NotNull
     private Long id;
 
-    @NotEmpty
     private String projectName;
 
-    @NotEmpty
     private String projectDescription;
+
+    private String site;
 
     @Builder.Default
     private List<Long> technologyList = new ArrayList<>();
 
-    @NotNull
     private Long personaId;
 }

@@ -27,8 +27,8 @@ public class ContactController {
         return ResponseEntity.ok(contactService.editContact(contactRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteContact(@RequestBody Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteContact(@PathVariable Long id) {
         contactService.deleteContact(id);
         return ResponseEntity.ok().build();
     }

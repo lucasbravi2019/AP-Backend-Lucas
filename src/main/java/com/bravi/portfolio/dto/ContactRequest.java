@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 @Builder
 public class ContactRequest {
 
-    @NotNull
     private Long id;
 
     @NotEmpty

@@ -8,6 +8,9 @@ import com.bravi.portfolio.repository.PersonaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @AllArgsConstructor
 @Component
 public class ContactMapper {
@@ -18,7 +21,7 @@ public class ContactMapper {
     public Contact toEntity(ContactRequest contactRequest) {
         Contact contact = Contact.builder().build();
         if (contactRequest.getId() != null) {
-            contact = contactRepository.findById(contact.getId())
+            contact = contactRepository.findById(contactRequest.getId())
                     .orElseThrow();
         }
 
@@ -38,5 +41,9 @@ public class ContactMapper {
                 .contactType(contact.getContactType())
                 .contactValue(contact.getContactValue())
                 .build();
+    }
+
+    public List<ContactResponse> toDtoList(List<Contact> list) {
+        return list.stream().map(this::toDto).collect(Collectors.toList());
     }
 }

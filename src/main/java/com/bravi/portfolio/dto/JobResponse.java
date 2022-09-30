@@ -17,7 +17,7 @@ public class JobResponse {
     private String companyName;
     private String jobRole;
     private String jobTitle;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
 
 }

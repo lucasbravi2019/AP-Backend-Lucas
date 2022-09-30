@@ -15,7 +15,7 @@ public class AboutController {
 
     private final AboutService aboutService;
 
-    @PutMapping("/{id}")
+    @PutMapping
     public ResponseEntity<AboutResponse> editAbout(
             @RequestParam("file") MultipartFile file,
             @RequestParam String aboutMsg,

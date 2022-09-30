@@ -24,6 +24,7 @@ public class ProjectController {
             @RequestParam String projectName,
             @RequestParam String projectDescription,
             @RequestParam List<Long> technologyList,
+            @RequestParam String site,
             @RequestParam Long personaId
     ) {
         ProjectRequest projectRequest = ProjectRequest.builder()
@@ -31,6 +32,7 @@ public class ProjectController {
                 .projectName(projectName)
                 .technologyList(technologyList)
                 .personaId(personaId)
+                .site(site)
                 .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProject(file, projectRequest));
     }
@@ -42,6 +44,7 @@ public class ProjectController {
             @RequestParam String projectDescription,
             @RequestParam List<Long> technologyList,
             @RequestParam Long personaId,
+            @RequestParam String site,
             @RequestParam Long id
     ) {
         ProjectRequest projectRequest = ProjectRequest.builder()
@@ -50,12 +53,13 @@ public class ProjectController {
                 .projectName(projectName)
                 .technologyList(technologyList)
                 .personaId(personaId)
+                .site(site)
                 .build();
         return ResponseEntity.ok(projectService.editProject(file, projectRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteProject(@RequestBody Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProject(@PathVariable Long id) {
         projectService.deleteProject(id);
         return ResponseEntity.ok().build();
     }

@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Builder
 public class JobRequest {
 
-    @NotNull
     private Long id;
 
     @NotEmpty

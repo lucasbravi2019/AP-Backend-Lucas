@@ -23,6 +23,7 @@ public class Project {
     private String projectName;
     private String projectDescription;
     private String image;
+    private String site;
 
     @ManyToOne
     private Persona persona;

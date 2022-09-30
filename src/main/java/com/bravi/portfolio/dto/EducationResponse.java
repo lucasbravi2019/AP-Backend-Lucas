@@ -16,7 +16,7 @@ public class EducationResponse {
     private Long id;
     private String institute;
     private String title;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
 
 }

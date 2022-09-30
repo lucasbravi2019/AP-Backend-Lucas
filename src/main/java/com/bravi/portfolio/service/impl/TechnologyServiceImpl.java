@@ -18,12 +18,15 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     @Override
     public TechnologyResponse createTechnology(MultipartFile file, TechnologyRequest technologyRequest) {
-        return technologyMapper.toDto(technologyRepository.save(technologyMapper.toEntity(technologyRequest)));
+        if (technologyRequest.getId() != null) {
+            technologyRequest.setId(null);
+        }
+        return technologyMapper.toDto(technologyRepository.save(technologyMapper.toEntity(file, technologyRequest)));
     }
 
     @Override
     public TechnologyResponse editTechnology(MultipartFile file, TechnologyRequest technologyRequest) {
-        return technologyMapper.toDto(technologyRepository.save(technologyMapper.toEntity(technologyRequest)));
+        return technologyMapper.toDto(technologyRepository.save(technologyMapper.toEntity(file, technologyRequest)));
     }
 
     @Override

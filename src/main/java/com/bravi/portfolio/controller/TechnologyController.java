@@ -49,8 +49,8 @@ public class TechnologyController {
         return ResponseEntity.ok(technologyService.editTechnology(file, technologyRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteTechnology(@RequestBody Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTechnology(@PathVariable Long id) {
         technologyService.deleteTechnology(id);
         return ResponseEntity.ok().build();
     }

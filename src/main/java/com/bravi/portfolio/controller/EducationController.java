@@ -6,8 +6,10 @@ import com.bravi.portfolio.service.EducationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @RestController
@@ -26,8 +28,8 @@ public class EducationController {
         return ResponseEntity.ok(educationService.editEducation(educationRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteEducation(@RequestBody Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEducation(@PathVariable Long id) {
         educationService.deleteEducation(id);
         return ResponseEntity.ok().build();
     }

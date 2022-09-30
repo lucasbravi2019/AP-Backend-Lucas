@@ -17,8 +17,9 @@ public class ProjectResponse {
     private Long id;
     private String projectName;
     private String projectDescription;
-    private byte[] image;
+    private String site;
 
     @Builder.Default
     private List<TechnologyResponse> technologyList = new ArrayList<>();
+    private byte[] image;
 }
