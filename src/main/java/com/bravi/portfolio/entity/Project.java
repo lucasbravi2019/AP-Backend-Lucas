@@ -29,6 +29,6 @@ public class Project {
     private Persona persona;
 
     @Builder.Default
-    @OneToMany
+    @ManyToMany
     private List<Technology> technologyList = new ArrayList<>();
 }
