@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -46,7 +48,7 @@ public class ProjectMapper {
                     .orElseThrow());
         }
         if (!CollectionUtils.isEmpty(projectRequest.getTechnologyList())) {
-            project.setTechnologyList(technologyRepository.findAllById(projectRequest.getTechnologyList()));
+            project.setTechnologyList(new HashSet<>(technologyRepository.findAllById(projectRequest.getTechnologyList())));
         }
 
         return project;
@@ -67,7 +69,7 @@ public class ProjectMapper {
         return response;
     }
 
-    private List<TechnologyResponse> mapTechnologies(List<Technology> technologyList) {
+    private Set<TechnologyResponse> mapTechnologies(Set<Technology> technologyList) {
         return technologyList.stream().map(technology -> {
                     TechnologyResponse response = TechnologyResponse.builder()
                             .id(technology.getId())
@@ -80,7 +82,7 @@ public class ProjectMapper {
                     }
                     return response;
                 })
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     public List<ProjectResponse> toDtoList(List<Project> list) {

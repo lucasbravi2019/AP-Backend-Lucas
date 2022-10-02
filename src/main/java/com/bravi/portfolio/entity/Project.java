@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,5 +32,5 @@ public class Project {
 
     @Builder.Default
     @ManyToMany
-    private List<Technology> technologyList = new ArrayList<>();
+    private Set<Technology> technologyList = new HashSet<>();
 }

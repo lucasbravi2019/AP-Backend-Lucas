@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -25,5 +26,8 @@ public class Technology {
 
     @ManyToOne
     private Persona persona;
+
+    @ManyToMany
+    private Set<Project> project;
 
 }
